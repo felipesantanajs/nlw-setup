@@ -1,7 +1,9 @@
 
+import './styles/global.css'
+
 function App() {
   return(
-    <h1>teste</h1>
+    <h1 className="text-center text-red-400">teste</h1>
   )
 }
 

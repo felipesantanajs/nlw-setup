@@ -1,12 +1,12 @@
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
-import  {PrismaClient } from '@prisma/client'
+import {prisma} from './lib/prisma'
 
 
 const app = Fastify()
 app.register(cors)
 
-const prisma = new PrismaClient();
+
 
 app.get('/habits', (req, res) =>{
   const habits  = prisma.habit.findMany()
@@ -14,9 +14,9 @@ app.get('/habits', (req, res) =>{
 })
 
 
-app.listen({
-  port: '3333',
-
-}).then(() =>{
-  console.log("server is running !")
+app.listen({ port: 3333 }, (err, address) => {
+  if (err) {
+    console.error(err)
+  }
+  console.log(`Server listening at ${address}`)
 })
